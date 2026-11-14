@@ -31,13 +31,13 @@ function Index() {
               <h1 className="mt-3 text-5xl leading-tight md:text-6xl">Bloom Ledger<span className="text-primary">.</span></h1>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">Real people behind smarter finance. Meet the team bringing financial clarity, strategy, and AI to your business.</p>
             </div>
-            <Button asChild className="h-11 w-fit"><Link to="/assistants">Find your financial partner <ArrowUpRight /></Link></Button>
+            <Button asChild className="h-11 w-fit"><Link to="/assistants">Meet the Consultants <ArrowUpRight /></Link></Button>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4">
             {team.map(({ consultant }) => (
               <Link key={consultant.slug} to="/assistants" className="group min-w-0">
                 <ConsultantPhoto consultant={consultant} portrait />
-                <div className="mt-4 flex items-start justify-between gap-2"><h2 className="text-xl leading-tight md:text-2xl">{consultant.name}</h2><ArrowUpRight className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none" /></div>
+                <div className="mt-4 flex items-start justify-between gap-2"><h2 className="text-xl leading-tight md:text-2xl">{consultant.name}{consultant.credential && <span className="text-sm">, {consultant.credential}</span>}</h2><ArrowUpRight className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none" /></div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{consultant.headline}</p>
                 <p className="mt-2 text-xs leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
               </Link>
@@ -64,7 +64,7 @@ function Index() {
             <UserRound className="h-7 w-7 text-primary" />
             <h3 className="mt-4 text-2xl">An AI-forward financial assistant</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">Work with consultants whose finance, strategy, and technology experience supports your next decision.</p>
-            <Button asChild variant="link" className="mt-3 px-0"><Link to="/assistants">Meet your match <ArrowRight /></Link></Button>
+            <Button asChild variant="link" className="mt-3 px-0"><Link to="/assistants">Meet the Consultants <ArrowRight /></Link></Button>
           </div>
         </div>
       </section>

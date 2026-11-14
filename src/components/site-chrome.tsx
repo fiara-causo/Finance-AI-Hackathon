@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 const nav = [
   { to: "/services", label: "Services" },
-  { to: "/assistants", label: "Meet the consultants" },
+  { to: "/assistants", label: "Meet the Consultants" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -44,7 +44,7 @@ export function SiteFooter() {
         <div className="text-sm opacity-80">
           <p className="font-semibold">Services</p>
           <p className="mt-2"><Link to="/services">AI automation & statements</Link></p>
-          <p><Link to="/assistants">Meet the consultants</Link></p>
+          <p><Link to="/assistants">Meet the Consultants</Link></p>
         </div>
         <p className="text-sm opacity-60 md:text-right">© 2026 Bloom Ledger. Built for small retail.</p>
       </div>
