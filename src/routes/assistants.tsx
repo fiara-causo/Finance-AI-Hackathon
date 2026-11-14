@@ -12,10 +12,10 @@ import { findConsultants, serviceLabels, type Consultant } from "@/lib/consultan
 export const Route = createFileRoute("/assistants")({
   head: () => ({
     meta: [
-      { title: "Meet the Consultants — Bloom Ledger" },
-      { name: "description", content: "Fractional financial assistants with enterprise experience and AI tools, matched to your small retail business." },
-      { property: "og:title", content: "Meet the Consultants — Bloom Ledger" },
-      { property: "og:description", content: "Enterprise-trained, AI-forward financial help for small retail." },
+      { title: "Meet the Consultants | Bloom Ledger" },
+      { name: "description", content: "Fractional financial assistants with enterprise experience and automation tools, matched to your small retail business." },
+      { property: "og:title", content: "Meet the Consultants | Bloom Ledger" },
+      { property: "og:description", content: "Experienced consultants and financial automation for small retail." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -59,7 +59,7 @@ function ConsultantProfile({ consultant, need }: { consultant: Consultant; need:
         <h2 className="text-2xl">Book an intro chat</h2>
         {sent ? (
           <div role="status" className="mt-4 rounded-lg bg-accent p-5 text-accent-foreground">
-            <p className="font-semibold">Thank you — lovely to meet you!</p>
+            <p className="font-semibold">Thank you! Lovely to meet you.</p>
             <p className="mt-2 text-sm">This preview hasn’t sent or saved your details, and no chat has been booked. You can connect with {consultant.name.split(" ")[0]} on LinkedIn.</p>
           </div>
         ) : (
@@ -69,7 +69,7 @@ function ConsultantProfile({ consultant, need }: { consultant: Consultant; need:
               <div><label htmlFor="intro-email" className="text-sm font-medium">Email</label><Input id="intro-email" name="email" type="email" autoComplete="email" required className="mt-1 h-11 bg-card" /></div>
             </div>
             <div><label htmlFor="intro-need" className="text-sm font-medium">What do you need help with?</label><Textarea id="intro-need" name="need" required rows={3} defaultValue={need === "all" ? "" : serviceLabels[need]} className="mt-1 bg-card" /></div>
-            <p className="text-xs text-muted-foreground">Preview only — nothing is sent, saved, or booked.</p>
+            <p className="text-xs text-muted-foreground">Preview only. Nothing is sent, saved, or booked.</p>
             <Button type="submit" className="h-11">Request an intro chat <ArrowUpRight /></Button>
           </form>
         )}

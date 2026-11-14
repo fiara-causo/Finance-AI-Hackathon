@@ -8,10 +8,10 @@ import { findConsultants } from "@/lib/consultant-matching";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bloom Ledger — Expert people. Smarter finance." },
-      { name: "description", content: "Meet the finance and technology team behind Bloom Ledger. Enterprise experience and AI-powered financial support for small retail businesses." },
-      { property: "og:title", content: "Bloom Ledger — Expert people. Smarter finance." },
-      { property: "og:description", content: "Meet our finance and technology consultants and explore AI-powered financial support for your shop." },
+      { title: "Bloom Ledger | Expert people. Smarter finance." },
+      { name: "description", content: "Meet the finance and technology team behind Bloom Ledger. Enterprise experience and automation supported financial support for small retail businesses." },
+      { property: "og:title", content: "Bloom Ledger | Expert people. Smarter finance." },
+      { property: "og:description", content: "Meet our finance and technology consultants and explore automation supported financial support for your business." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -29,7 +29,7 @@ function Index() {
             <div className="max-w-2xl">
               <p className="text-xs font-bold uppercase text-primary">Independent minds. Enterprise experience.</p>
               <h1 className="mt-3 text-5xl leading-tight md:text-6xl">Bloom Ledger<span className="text-primary">.</span></h1>
-              <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">Real people behind smarter finance. Meet the team bringing financial clarity, strategy, and AI to your business.</p>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">Real people behind smarter finance. Meet the team bringing financial clarity, strategy, and automation to your business.</p>
             </div>
             <Button asChild className="h-11 w-fit"><Link to="/assistants">Meet the Consultants <ArrowUpRight /></Link></Button>
           </div>
@@ -48,7 +48,7 @@ function Index() {
       <section className="bg-ink text-background">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-3 px-5 py-7 md:flex-row md:items-center">
           <h2 className="text-2xl">Big-company experience.<br className="md:hidden" /> Small-business focus.</h2>
-          <p className="max-w-lg text-sm leading-relaxed opacity-80">From retail planning and forecasting to strategy, controls, and technology — expertise that meets you where you are.</p>
+          <p className="max-w-lg text-sm leading-relaxed opacity-80">From retail planning and forecasting to strategy, controls, and technology. Expertise that meets you where you are.</p>
         </div>
       </section>
       <section className="mx-auto max-w-6xl px-5 py-14">
@@ -56,13 +56,13 @@ function Index() {
         <div className="mt-7 grid gap-8 md:grid-cols-2">
           <div className="border-t-2 border-primary py-6">
             <Workflow className="h-7 w-7 text-primary" />
-            <h3 className="mt-4 text-2xl">AI automation & statement insights</h3>
+            <h3 className="mt-4 text-2xl">Automation & statement insights</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">Automate your money tasks and turn your financial statements into clear next steps.</p>
-            <Button asChild variant="link" className="mt-3 px-0"><Link to="/services">Explore AI tools <ArrowRight /></Link></Button>
+            <Button asChild variant="link" className="mt-3 px-0"><Link to="/services">Explore automation <ArrowRight /></Link></Button>
           </div>
           <div className="border-t-2 border-primary py-6">
             <UserRound className="h-7 w-7 text-primary" />
-            <h3 className="mt-4 text-2xl">An AI-forward financial assistant</h3>
+            <h3 className="mt-4 text-2xl">An experienced financial assistant</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">Work with consultants whose finance, strategy, and technology experience supports your next decision.</p>
             <Button asChild variant="link" className="mt-3 px-0"><Link to="/assistants">Meet the Consultants <ArrowRight /></Link></Button>
           </div>
