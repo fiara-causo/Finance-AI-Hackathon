@@ -1,5 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowUpRight, Check, MapPin, SlidersHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { findConsultants, serviceLabels, type Consultant } from "@/lib/consultant-matching";
 
 export const Route = createFileRoute("/assistants")({
   head: () => ({
@@ -8,34 +15,136 @@ export const Route = createFileRoute("/assistants")({
       { name: "description", content: "Fractional financial assistants with enterprise experience and AI tools, matched to your small retail business." },
       { property: "og:title", content: "Hire an AI-Forward Financial Assistant — Bloom Ledger" },
       { property: "og:description", content: "Enterprise-trained, AI-forward financial help for small retail." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Assistants,
 });
 
-const perks = [
-  "Background in enterprise finance & retail",
-  "Uses AI tools to work faster, so you pay less",
-  "Monthly close, budgets, cash-flow planning",
-  "Flexible hours — from a few a month to weekly",
-];
+function ConsultantPhoto({ consultant, large = false }: { consultant: Consultant; large?: boolean }) {
+  const [missing, setMissing] = useState(false);
+  const initials = consultant.name.split(" ").map((part) => part[0]).join("");
+  return (
+    <div className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-secondary text-secondary-foreground ${large ? "h-40 w-40 text-5xl sm:h-48 sm:w-48" : "h-28 w-28 text-3xl"}`}>
+      {missing || !consultant.photo ? <span role="img" aria-label={consultant.name}>{initials}</span> : (
+        <img src={consultant.photo} alt={consultant.name} className="h-full w-full object-cover" ref={(image) => { if (image?.complete && image.naturalWidth === 0) setMissing(true); }} onError={() => setMissing(true)} />
+      )}
+    </div>
+  );
+}
+
+function ServiceChip({ service }: { service: string }) {
+  return <span className="rounded-md bg-secondary px-2.5 py-1 text-xs leading-relaxed text-secondary-foreground">{serviceLabels[service]}</span>;
+}
+
+function ConsultantProfile({ consultant, need }: { consultant: Consultant; need: string }) {
+  const [sent, setSent] = useState(false);
+  return (
+    <>
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+        <ConsultantPhoto consultant={consultant} large />
+        <div className="min-w-0">
+          <DialogTitle className="font-display text-3xl leading-tight tracking-normal">{consultant.name}</DialogTitle>
+          <DialogDescription className="mt-3 leading-relaxed">{consultant.headline}</DialogDescription>
+          <p className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="h-4 w-4" />{consultant.location}</p>
+          <Button asChild variant="link" className="mt-2 h-auto px-0">
+            <a href={consultant.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight /></a>
+          </Button>
+        </div>
+      </div>
+      <p className="leading-relaxed text-muted-foreground">{consultant.bio}</p>
+      <div>
+        <h2 className="text-2xl">Services</h2>
+        <div className="mt-3 flex flex-wrap gap-2">{consultant.services.map((service) => <ServiceChip key={service} service={service} />)}</div>
+        <p className="mt-3 text-sm capitalize text-muted-foreground">{consultant.industries.join(" · ")}</p>
+      </div>
+      <div>
+        <h2 className="text-2xl">Experience</h2>
+        <ul className="mt-3 space-y-3">
+          {consultant.experience.map((experience) => <li key={experience} className="flex gap-2 text-sm leading-relaxed"><Check className="mt-1 h-4 w-4 shrink-0 text-primary" />{experience}</li>)}
+        </ul>
+      </div>
+      <div className="border-t border-border pt-5">
+        <h2 className="text-2xl">Book an intro chat</h2>
+        {sent ? (
+          <div role="status" className="mt-4 rounded-lg bg-accent p-5 text-accent-foreground">
+            <p className="font-semibold">Thank you — lovely to meet you!</p>
+            <p className="mt-2 text-sm">This preview hasn’t sent or saved your details, and no chat has been booked. You can connect with {consultant.name.split(" ")[0]} on LinkedIn.</p>
+          </div>
+        ) : (
+          <form className="mt-4 space-y-4" onSubmit={(event) => { event.preventDefault(); event.currentTarget.reset(); setSent(true); }}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div><label htmlFor="intro-name" className="text-sm font-medium">Name</label><Input id="intro-name" name="name" autoComplete="name" required className="mt-1 h-11 bg-card" /></div>
+              <div><label htmlFor="intro-email" className="text-sm font-medium">Email</label><Input id="intro-email" name="email" type="email" autoComplete="email" required className="mt-1 h-11 bg-card" /></div>
+            </div>
+            <div><label htmlFor="intro-need" className="text-sm font-medium">What do you need help with?</label><Textarea id="intro-need" name="need" required rows={3} defaultValue={need === "all" ? "" : serviceLabels[need]} className="mt-1 bg-card" /></div>
+            <p className="text-xs text-muted-foreground">Preview only — nothing is sent, saved, or booked.</p>
+            <Button type="submit" className="h-11">Request an intro chat <ArrowUpRight /></Button>
+          </form>
+        )}
+      </div>
+    </>
+  );
+}
 
 function Assistants() {
+  const [need, setNeed] = useState("all");
+  const [filters, setFilters] = useState<string[]>([]);
+  const [selected, setSelected] = useState<Consultant | null>(null);
+  const results = findConsultants(need, filters);
   return (
-    <section className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-2">
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-widest text-primary">Service two</p>
-        <h1 className="mt-3 text-4xl md:text-5xl">A financial right hand, <em className="text-primary">without</em> the big-firm bill.</h1>
-        <p className="mt-5 text-lg text-muted-foreground">We match you with an assistant who's worked inside large companies and now brings those skills — plus AI — to independent shops.</p>
-        <Link to="/contact" className="mt-8 inline-block rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground">Request a match</Link>
-      </div>
-      <ul className="space-y-4 rounded-3xl bg-secondary p-8">
-        {perks.map((p) => (
-          <li key={p} className="flex gap-3 text-secondary-foreground">
-            <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" /> {p}
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <section className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase text-primary">Hire an assistant</p>
+          <h1 className="mt-3 text-4xl leading-tight tracking-normal md:text-5xl">A financial right hand, <em className="text-primary">with real experience.</em></h1>
+          <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Meet four consultants bringing finance, strategy, and technology experience to your next business decision.</p>
+        </div>
+        <div className="mt-10 border-y border-border py-6">
+          <h2 className="text-2xl">Find my match</h2>
+          <label htmlFor="match-need" className="mt-3 block text-sm font-medium">What do you need help with?</label>
+          <Select value={need} onValueChange={setNeed}>
+            <SelectTrigger id="match-need" className="mt-2 h-auto min-h-12 w-full max-w-xl bg-card text-left [&>span]:line-clamp-none [&>span]:whitespace-normal"><SelectValue /></SelectTrigger>
+            <SelectContent className="max-w-[calc(100vw-2.5rem)]">
+              <SelectItem value="all">All services</SelectItem>
+              {Object.entries(serviceLabels).map(([service, label]) => <SelectItem key={service} value={service} className="whitespace-normal">{label}</SelectItem>)}
+            </SelectContent>
+          </Select>
+          <p className="mt-5 flex items-center gap-2 text-sm font-medium"><SlidersHorizontal className="h-4 w-4 text-primary" />Filter by service</p>
+          <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Service filters">
+            {Object.entries(serviceLabels).map(([service, label]) => (
+              <Button key={service} variant={filters.includes(service) ? "secondary" : "outline"} aria-pressed={filters.includes(service)} className="h-auto min-h-9 max-w-full whitespace-normal px-3 py-2 text-left text-xs" onClick={() => setFilters((current) => current.includes(service) ? current.filter((item) => item !== service) : [...current, service])}>
+                {filters.includes(service) && <Check />}{label}
+              </Button>
+            ))}
+          </div>
+        </div>
+        <div className="my-5 flex min-h-9 items-center justify-between gap-3">
+          <p aria-live="polite" className="text-sm text-muted-foreground">{results.length} {results.length === 1 ? "consultant" : "consultants"}{need !== "all" || filters.length ? " matched" : ""}</p>
+          {(need !== "all" || filters.length > 0) && <Button variant="ghost" size="sm" onClick={() => { setNeed("all"); setFilters([]); }}>Clear filters</Button>}
+        </div>
+        <div className="grid items-stretch gap-6 sm:grid-cols-2">
+          {results.map(({ consultant, reason }) => (
+            <article key={consultant.slug} aria-label={consultant.name} className="flex min-w-0 cursor-pointer flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/60" onClick={() => setSelected(consultant)}>
+              <div className="flex items-center gap-4">
+                <ConsultantPhoto consultant={consultant} />
+                <div className="min-w-0"><h2 className="text-2xl leading-tight tracking-normal">{consultant.name}</h2><p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3 shrink-0" />{consultant.location}</p></div>
+              </div>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{consultant.headline}</p>
+              {reason && <p className="mt-3 text-sm font-medium leading-relaxed text-primary">{reason}</p>}
+              <div className="mt-4 flex flex-wrap gap-2">{[...consultant.services].sort((a, b) => Number(b === need || filters.includes(b)) - Number(a === need || filters.includes(a))).slice(0, 3).map((service) => <ServiceChip key={service} service={service} />)}</div>
+              <div className="mt-auto pt-6"><Button variant="outline" className="w-full" aria-label={`View profile of ${consultant.name}`} onClick={(event) => { event.stopPropagation(); setSelected(consultant); }}>View profile <ArrowUpRight /></Button></div>
+            </article>
+          ))}
+        </div>
+        {results.length === 0 && <div className="py-12 text-center"><h2 className="text-2xl">No matches just yet.</h2><p className="mt-2 text-muted-foreground">Try another service or clear your filters.</p><Button variant="outline" className="mt-5" onClick={() => { setNeed("all"); setFilters([]); }}>Show all consultants</Button></div>}
+      </section>
+      <Dialog open={selected !== null} onOpenChange={(open) => { if (!open) setSelected(null); }}>
+        <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-3xl gap-6 overflow-y-auto rounded-lg p-6 sm:p-8">
+          {selected && <ConsultantProfile key={selected.slug} consultant={selected} need={need} />}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
