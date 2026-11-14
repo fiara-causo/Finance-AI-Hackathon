@@ -33,7 +33,7 @@ const docs = [
   ["taxjar_ca_oct.csv", "Sales tax", "1 state"], ["sba_loan_schedule.pdf", "Loan", "Amortization"],
 ];
 const lines = [["Oct 02", "SHOPIFY PAYMENTS PAYOUT SP-1001", "+1,281.04", "Sales deposits", 98], ["Oct 05", "SBA LOAN PMT", "-1,412.66", "Loan payment", 96], ["Oct 06", "ACH PMT HOLLIS GROUP", "-2,850.00", "Uncategorized", 35], ["Oct 09", "NETFLIX.COM", "-22.99", "Personal, flag", 71], ["Oct 12", "PAYMENT TO LINEN MILL CO", "-18,400.00", "Inventory purchases", 94]] as const;
-const recs = [["Processor payouts → bank deposits", "57 of 57 paid payouts matched to the cent", "PASS"], ["Payouts still in transit at month end", "$4,414.73 from Oct 31 sales, due in early November", "WARN"], ["California sales tax", "Owner picked Shopify; the $50.00 adjustment is drafted", "FIXED"], ["Payroll register → bank", "$11,464.73 funded on both pay dates", "PASS"]];
+const recs = [["Processor payouts → bank deposits", "57 of 57 paid payouts matched to the cent", "PASS"], ["Payouts still in transit at month end", "$4,414.73 from Oct 31 sales, due in early November", "WARN"], ["California sales tax", "Owner picked Shopify; the $50.00 adjustment is drafted", "FIXED"], ["Payroll register → bank", "$11,464.73 funded on both pay dates", "PASS"]] as const;
 const pl = [["Revenue", "$112,400"], ["Cost of goods sold", "($30,100)"], ["Gross profit", "$82,300"], ["Operating expenses", "($60,300)"], ["Net income", "$22,000"]];
 const checks = ["Every line categorized", "Review queue cleared", "Payouts add up", "Sales tie by gateway", "Refunds tie", "Deposits matched", "Sales tax agrees"];
 
