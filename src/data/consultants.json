@@ -20,6 +20,7 @@
     {
       "slug": "amanda-roberts",
       "name": "Amanda Roberts",
+      "credential": "MAcc D+A",
       "headline": "Strategy, Transactions & Risk",
       "education": "Master’s in Accounting & Business Analytics • USC",
       "location": "San Francisco",
@@ -108,6 +109,7 @@
     {
       "slug": "cindy-balaji",
       "name": "Cindy Balaji",
+      "credential": "MBA",
       "headline": "Strategic Finance, M&A & AI Strategy",
       "location": "San Francisco",
       "photo": "/consultants/cindy-balaji.jpg",

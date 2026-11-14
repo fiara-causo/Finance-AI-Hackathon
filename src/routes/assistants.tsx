@@ -34,7 +34,7 @@ function ConsultantProfile({ consultant, need }: { consultant: Consultant; need:
       <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
         <ConsultantPhoto consultant={consultant} large />
         <div className="min-w-0">
-          <DialogTitle className="font-display text-3xl leading-tight tracking-normal">{consultant.name}</DialogTitle>
+          <DialogTitle className="font-display text-3xl leading-tight tracking-normal">{consultant.name}{consultant.credential && <span className="text-lg">, {consultant.credential}</span>}</DialogTitle>
           <DialogDescription className="mt-3 leading-relaxed">{consultant.headline}</DialogDescription>
           <p className="mt-2 text-sm leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
           {"education" in consultant && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{consultant.education}</p>}
@@ -88,7 +88,7 @@ function Assistants() {
     <>
       <section className="mx-auto max-w-6xl px-5 py-8 md:py-10">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase text-primary">Meet the consultants</p>
+          <p className="text-sm font-semibold uppercase text-primary">Meet the Consultants</p>
           <h1 className="mt-3 text-4xl leading-tight tracking-normal md:text-5xl">Meet your <em className="text-primary">finance team.</em></h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Meet four consultants bringing finance, strategy, and technology experience to your next business decision.</p>
         </div>
@@ -123,7 +123,7 @@ function Assistants() {
             <article key={consultant.slug} aria-label={consultant.name} className="flex min-w-0 cursor-pointer flex-col rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/60" onClick={() => setSelected(consultant)}>
               <div>
                 <ConsultantPhoto consultant={consultant} portrait />
-                <div className="mt-4 min-w-0"><h2 className="text-xl leading-tight tracking-normal">{consultant.name}</h2><p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3 shrink-0" />{consultant.location}</p></div>
+                <div className="mt-4 min-w-0"><h2 className="text-xl leading-tight tracking-normal">{consultant.name}{consultant.credential && <span className="text-sm">, {consultant.credential}</span>}</h2><p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3 shrink-0" />{consultant.location}</p></div>
               </div>
               <p className="mt-5 text-sm font-semibold leading-relaxed text-foreground">{consultant.headline}</p>
               <p className="mt-2 text-xs leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
