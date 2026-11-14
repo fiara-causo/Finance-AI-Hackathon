@@ -34,7 +34,7 @@ function Services() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16">
       <p className="text-sm font-semibold text-primary">What Are We?</p>
-      <h1 className="mt-3 text-2xl leading-snug md:text-3xl">Automation for clearer business finances.</h1>
+      <h1 className="mt-3 text-xl leading-snug md:text-3xl">Automation for your finances.</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">We combine financial automation with consulting experience to help you organize your numbers, improve reporting and plan your next move.</p>
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {items.map(({ icon: Icon, t, d, examples, example }) => (
