@@ -1,3 +1,4 @@
+
 /* eslint-disable */
 
 // @ts-nocheck
@@ -13,6 +14,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistantsRouteImport } from './routes/assistants'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProductRouteImport } from './routes/product'
+import { Route as CurriculumRouteImport } from './routes/curriculum'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as ServicesRouteImport } from './routes/services'
 
 const IndexRoute = IndexRouteImport.update({
@@ -20,21 +24,43 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+
 const AssistantsRoute = AssistantsRouteImport.update({
   id: '/assistants',
   path: '/assistants',
   getParentRoute: () => rootRouteImport,
 } as any)
+
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+
 const ProductRoute = ProductRouteImport.update({
   id: '/product',
   path: '/product',
   getParentRoute: () => rootRouteImport,
 } as any)
+
+const CurriculumRoute = CurriculumRouteImport.update({
+  id: '/curriculum',
+  path: '/curriculum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -46,36 +72,77 @@ export interface FileRoutesByFullPath {
   '/assistants': typeof AssistantsRoute
   '/contact': typeof ContactRoute
   '/product': typeof ProductRoute
+  '/curriculum': typeof CurriculumRoute
+  '/login': typeof LoginRoute
+  '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
 }
+
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistants': typeof AssistantsRoute
   '/contact': typeof ContactRoute
   '/product': typeof ProductRoute
+  '/curriculum': typeof CurriculumRoute
+  '/login': typeof LoginRoute
+  '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
 }
+
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assistants': typeof AssistantsRoute
   '/contact': typeof ContactRoute
   '/product': typeof ProductRoute
+  '/curriculum': typeof CurriculumRoute
+  '/login': typeof LoginRoute
+  '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
 }
+
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assistants' | '/contact' | '/product' | '/services'
+  fullPaths:
+    | '/'
+    | '/assistants'
+    | '/contact'
+    | '/product'
+    | '/curriculum'
+    | '/login'
+    | '/portal'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assistants' | '/contact' | '/product' | '/services'
-  id: '__root__' | '/' | '/assistants' | '/contact' | '/product' | '/services'
+  to:
+    | '/'
+    | '/assistants'
+    | '/contact'
+    | '/product'
+    | '/curriculum'
+    | '/login'
+    | '/portal'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistants'
+    | '/contact'
+    | '/product'
+    | '/curriculum'
+    | '/login'
+    | '/portal'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
+
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistantsRoute: typeof AssistantsRoute
   ContactRoute: typeof ContactRoute
   ProductRoute: typeof ProductRoute
+  CurriculumRoute: typeof CurriculumRoute
+  LoginRoute: typeof LoginRoute
+  PortalRoute: typeof PortalRoute
   ServicesRoute: typeof ServicesRoute
 }
 
@@ -109,6 +176,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/curriculum': {
+      id: '/curriculum'
+      path: '/curriculum'
+      fullPath: '/curriculum'
+      preLoaderRoute: typeof CurriculumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -124,14 +212,19 @@ const rootRouteChildren: RootRouteChildren = {
   AssistantsRoute: AssistantsRoute,
   ContactRoute: ContactRoute,
   ProductRoute: ProductRoute,
+  CurriculumRoute: CurriculumRoute,
+  LoginRoute: LoginRoute,
+  PortalRoute: PortalRoute,
   ServicesRoute: ServicesRoute,
 }
+
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
 import type { startInstance } from './start.ts'
+
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
