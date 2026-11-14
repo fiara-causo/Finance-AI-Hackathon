@@ -16,8 +16,12 @@ export function findConsultants(need = "all", filters: string[] = []) {
       (filters.length === 0 || filters.some((service) => matches.includes(service))),
     )
     .sort((a, b) => b.matches.length - a.matches.length)
-    .map(({ consultant, matches }) => ({
-      consultant,
-      reason: matches.length ? `A match for ${serviceLabels[matches[0]].toLowerCase()}${matches.length > 1 ? ` and ${matches.length - 1} more selected ${matches.length === 2 ? "service" : "services"}` : ""}.` : undefined,
-    }));
+    .map(({ consultant, matches }) => {
+      const firstMatch = matches[0];
+      const label = firstMatch ? serviceLabels[firstMatch] : undefined;
+      return {
+        consultant,
+        reason: label ? `A match for ${label.toLowerCase()}${matches.length > 1 ? ` and ${matches.length - 1} more selected ${matches.length === 2 ? "service" : "services"}` : ""}.` : undefined,
+      };
+    });
 }

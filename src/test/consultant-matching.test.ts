@@ -16,7 +16,7 @@ describe("Consultant matching", () => {
   it("puts the consultant covering more selected services first and explains why", () => {
     const results = findConsultants("ma-readiness", ["compliance-controls", "loan-runway"]);
     expect(results.map(({ consultant }) => consultant.slug)).toEqual(["cindy-balaji", "amanda-roberts"]);
-    expect(results[0].reason).toBe("A match for getting ready to buy or sell a business and 2 more selected services.");
+    expect(results[0]?.reason).toBe("A match for getting ready to buy or sell a business and 2 more selected services.");
   });
   it("returns no matches for incompatible dropdown and chip selections", () => {
     expect(findConsultants("budget-forecast", ["banking-track"])).toEqual([]);
