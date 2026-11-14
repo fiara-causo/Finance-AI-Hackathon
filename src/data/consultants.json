@@ -20,61 +20,114 @@
     {
       "slug": "amanda-roberts",
       "name": "Amanda Roberts",
-      "headline": "Strategy & Operations Manager, Financial Audits & Risk at Amgen, ex EY-Parthenon Deals",
+      "headline": "Strategy, Transactions & Risk",
       "location": "San Francisco",
       "photo": "/consultants/amanda-roberts.jpg",
       "linkedin": "https://www.linkedin.com/in/amanda-t-roberts/",
-      "services": ["ma-readiness", "funding-readiness", "compliance-controls", "reporting-dashboards", "technical-diligence"],
-      "industries": ["tech", "healthcare"],
+      "services": [
+        "ma-readiness",
+        "funding-readiness",
+        "compliance-controls",
+        "reporting-dashboards",
+        "technical-diligence"
+      ],
+      "industries": [
+        "tech",
+        "healthcare"
+      ],
       "bio": "Helps companies get ready to buy or sell. Former EY-Parthenon deals associate in transaction analytics and former KPMG audit technology specialist, now in strategy, operations and financial audit risk at Amgen",
       "experience": [
         "EY-Parthenon Senior Associate Strategy & Transactions (Deals, Transaction Analytics)",
         "KPMG Audit Associate, data analytics focus (one of 17 Audit Technology Professionals out of 1,000+ in the Bay Area)",
         "Amgen Strategy & Operations Manager, Financial Audits & Risk"
+      ],
+      "companies": [
+        "Amgen",
+        "EY-Parthenon",
+        "KPMG"
       ]
     },
     {
       "slug": "fiara-causo",
       "name": "Fiara Causo",
-      "headline": "Senior Financial Analyst, Corporate Business Planning & Analysis at Sephora, ex Google and EY",
+      "headline": "Financial Planning, Systems & Accounting",
       "location": "San Francisco",
       "photo": "/consultants/fiara-causo.jpg",
       "linkedin": "https://www.linkedin.com/in/fiara-causo",
-      "services": ["budget-forecast", "loan-runway", "revenue-recognition", "erp-finance-systems", "retail-track"],
-      "industries": ["retail", "tech"],
+      "services": [
+        "budget-forecast",
+        "loan-runway",
+        "revenue-recognition",
+        "erp-finance-systems",
+        "retail-track"
+      ],
+      "industries": [
+        "retail",
+        "tech"
+      ],
       "bio": "Corporate planning and forecasting analyst at Sephora. Previously led a finance systems migration at Google and, at EY, handled revenue recognition for SaaS companies and advised startups on controls",
       "experience": [
         "Sephora Senior Financial Analyst, Corporate Business Planning & Analysis",
         "Google Financial Operations Analyst, led Order-to-Cash SAP S/4HANA migration",
         "EY Core Assurance Associate (ASC 606 for four SaaS Fortune 500 companies, advised startups on internal controls and SOX) and Analytics & Innovation Specialist"
+      ],
+      "companies": [
+        "Sephora",
+        "Google",
+        "EY"
       ]
     },
     {
       "slug": "maansi-nema",
       "name": "Maansi Nema",
-      "headline": "Technology Analyst at Wells Fargo, University of Michigan",
+      "headline": "Technology & Software Engineering",
       "location": "San Francisco",
       "photo": "/consultants/maansi-nema.jpg",
       "linkedin": "https://www.linkedin.com/in/maansinema/",
-      "services": ["data-integrations", "banking-track", "technical-diligence"],
-      "industries": ["banking"],
+      "services": [
+        "data-integrations",
+        "banking-track",
+        "technical-diligence"
+      ],
+      "industries": [
+        "banking"
+      ],
       "bio": "Technology analyst at Wells Fargo with software consulting experience at Atlas Digital Consulting Group",
       "experience": [
         "Wells Fargo Technology Analyst and prior software engineering intern",
         "Atlas Digital Consulting Group Software Development Analyst",
         "MLH Fellowship production engineering fellow"
+      ],
+      "companies": [
+        "Wells Fargo",
+        "Atlas Digital Consulting Group",
+        "MLH Fellowship"
       ]
     },
     {
       "slug": "cindy-balaji",
       "name": "Cindy Balaji",
-      "headline": "Strategy & Ops at RealPage, ex L.E.K. Consulting and FalconX, Booth MBA, CPA",
+      "headline": "Strategic Finance, M&A & AI Strategy",
       "location": "San Francisco",
       "photo": "/consultants/cindy-balaji.jpg",
       "linkedin": "https://www.linkedin.com/in/cindybalaji/",
-      "services": ["ma-readiness", "funding-readiness", "small-business-clarity", "compliance-controls", "loan-runway", "strategy-ai-adoption", "real-estate-track"],
-      "industries": ["real estate", "proptech", "software", "e-commerce", "small business"],
-      "bio": "Strategy and finance operator with consulting, startup and audit experience. Worked on PE due diligence and M&A at L.E.K., was the 2nd finance hire at a Series A marketplace, and is a CPA with a Booth MBA",
+      "services": [
+        "ma-readiness",
+        "funding-readiness",
+        "small-business-clarity",
+        "compliance-controls",
+        "loan-runway",
+        "strategy-ai-adoption",
+        "real-estate-track"
+      ],
+      "industries": [
+        "real estate",
+        "proptech",
+        "software",
+        "e-commerce",
+        "small business"
+      ],
+      "bio": "Strategy and finance operator with consulting, startup and audit experience. Worked on PE due diligence and M&A at L.E.K., was the 2nd finance hire at a Series A marketplace, and is a CPA",
       "experience": [
         "RealPage Strategy & Ops (Lumina AI strategy)",
         "FalconX Finance & Strategy",
@@ -82,6 +135,14 @@
         "Pandora Strategic Finance",
         "Chairish Senior Financial Analyst, 2nd finance hire at a Series A e-commerce marketplace",
         "BDO Auditor (tech, life sciences, retail, energy)"
+      ],
+      "companies": [
+        "RealPage",
+        "FalconX",
+        "L.E.K. Consulting",
+        "Pandora",
+        "Chairish",
+        "BDO"
       ]
     }
   ]

@@ -39,6 +39,7 @@ function Index() {
                 <ConsultantPhoto consultant={consultant} portrait />
                 <div className="mt-4 flex items-start justify-between gap-2"><h2 className="text-xl leading-tight md:text-2xl">{consultant.name}</h2><ArrowUpRight className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none" /></div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{consultant.headline}</p>
+                <p className="mt-2 text-xs leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
               </Link>
             ))}
           </div>
