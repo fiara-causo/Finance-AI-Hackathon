@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Render the consultant directory from its JSON data and keep matching logic browser-safe and independently tested; the intro form is presentation-only and must not persist or send submissions.
