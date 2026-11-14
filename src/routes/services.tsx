@@ -8,6 +8,8 @@ export const Route = createFileRoute("/services")({
       { name: "description", content: "Automate receipts, sales syncing and reports, and understand your financial statements with AI made for small retail." },
       { property: "og:title", content: "AI Finance Automation for Retail — Bloom Ledger" },
       { property: "og:description", content: "Automate your workflows and understand your financial statements with AI." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Services,

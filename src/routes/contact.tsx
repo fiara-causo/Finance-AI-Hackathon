@@ -8,6 +8,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Tell us about your shop and we'll show you how Bloom Ledger can help." },
       { property: "og:title", content: "Contact Bloom Ledger" },
       { property: "og:description", content: "Book a chat about AI finance for your retail shop." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,
