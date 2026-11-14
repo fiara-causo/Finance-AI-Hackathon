@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowUpRight, Check, MapPin, SlidersHorizontal } from "lucide-react";
+import { ConsultantPhoto } from "@/components/consultant-photo";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
@@ -21,18 +22,6 @@ export const Route = createFileRoute("/assistants")({
   }),
   component: Assistants,
 });
-
-function ConsultantPhoto({ consultant, large = false }: { consultant: Consultant; large?: boolean }) {
-  const [missing, setMissing] = useState(false);
-  const initials = consultant.name.split(" ").map((part) => part[0]).join("");
-  return (
-    <div className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-secondary text-secondary-foreground ${large ? "h-40 w-40 text-5xl sm:h-48 sm:w-48" : "h-28 w-28 text-3xl"}`}>
-      {missing || !consultant.photo ? <span role="img" aria-label={consultant.name}>{initials}</span> : (
-        <img src={consultant.photo} alt={consultant.name} className="h-full w-full object-cover" ref={(image) => { if (image?.complete && image.naturalWidth === 0) setMissing(true); }} onError={() => setMissing(true)} />
-      )}
-    </div>
-  );
-}
 
 function ServiceChip({ service }: { service: string }) {
   return <span className="rounded-md bg-secondary px-2.5 py-1 text-xs leading-relaxed text-secondary-foreground">{serviceLabels[service]}</span>;
@@ -95,13 +84,15 @@ function Assistants() {
   const results = findConsultants(need, filters);
   return (
     <>
-      <section className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+      <section className="mx-auto max-w-6xl px-5 py-8 md:py-10">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase text-primary">Hire an assistant</p>
-          <h1 className="mt-3 text-4xl leading-tight tracking-normal md:text-5xl">A financial right hand, <em className="text-primary">with real experience.</em></h1>
+          <h1 className="mt-3 text-4xl leading-tight tracking-normal md:text-5xl">Meet your <em className="text-primary">finance team.</em></h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Meet four consultants bringing finance, strategy, and technology experience to your next business decision.</p>
         </div>
-        <div className="mt-10 border-y border-border py-6">
+        <details className="mt-6 border-y border-border py-4">
+          <summary className="cursor-pointer text-sm font-semibold text-primary">Find my match · Filter by service</summary>
+          <div className="pt-4">
           <h2 className="text-2xl">Find my match</h2>
           <label htmlFor="match-need" className="mt-3 block text-sm font-medium">What do you need help with?</label>
           <Select value={need} onValueChange={setNeed}>
@@ -119,17 +110,18 @@ function Assistants() {
               </Button>
             ))}
           </div>
-        </div>
+          </div>
+        </details>
         <div className="my-5 flex min-h-9 items-center justify-between gap-3">
           <p aria-live="polite" className="text-sm text-muted-foreground">{results.length} {results.length === 1 ? "consultant" : "consultants"}{need !== "all" || filters.length ? " matched" : ""}</p>
           {(need !== "all" || filters.length > 0) && <Button variant="ghost" size="sm" onClick={() => { setNeed("all"); setFilters([]); }}>Clear filters</Button>}
         </div>
-        <div className="grid items-stretch gap-6 sm:grid-cols-2">
+        <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {results.map(({ consultant, reason }) => (
-            <article key={consultant.slug} aria-label={consultant.name} className="flex min-w-0 cursor-pointer flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/60" onClick={() => setSelected(consultant)}>
-              <div className="flex items-center gap-4">
-                <ConsultantPhoto consultant={consultant} />
-                <div className="min-w-0"><h2 className="text-2xl leading-tight tracking-normal">{consultant.name}</h2><p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3 shrink-0" />{consultant.location}</p></div>
+            <article key={consultant.slug} aria-label={consultant.name} className="flex min-w-0 cursor-pointer flex-col rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/60" onClick={() => setSelected(consultant)}>
+              <div>
+                <ConsultantPhoto consultant={consultant} portrait />
+                <div className="mt-4 min-w-0"><h2 className="text-xl leading-tight tracking-normal">{consultant.name}</h2><p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3 shrink-0" />{consultant.location}</p></div>
               </div>
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{consultant.headline}</p>
               {reason && <p className="mt-3 text-sm font-medium leading-relaxed text-primary">{reason}</p>}

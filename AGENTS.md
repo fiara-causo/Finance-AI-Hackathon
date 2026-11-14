@@ -30,3 +30,5 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - Render the consultant directory from its JSON data and keep matching logic browser-safe and independently tested; the intro form is presentation-only and must not persist or send submissions.
+
+- Share consultant photo rendering between the homepage and directory so portrait sizing and missing-photo fallbacks stay consistent.

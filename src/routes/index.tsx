@@ -1,79 +1,77 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, FileText, Workflow, UserRound } from "lucide-react";
+import { ArrowRight, Workflow, UserRound, ArrowUpRight } from "lucide-react";
 import { AiDemo } from "@/components/ai-demo";
+import { Button } from "@/components/ui/button";
+import { ConsultantPhoto } from "@/components/consultant-photo";
+import { findConsultants } from "@/lib/consultant-matching";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bloom Ledger — AI finance for small retail shops" },
-      { name: "description", content: "Automate your bookkeeping, understand your financial statements, or hire an AI-forward financial assistant with enterprise experience." },
-      { property: "og:title", content: "Bloom Ledger — AI finance for small retail shops" },
-      { property: "og:description", content: "Automate your bookkeeping, understand your statements, or hire an AI-forward financial assistant." },
+      { title: "Bloom Ledger — Expert people. Smarter finance." },
+      { name: "description", content: "Meet the finance and technology team behind Bloom Ledger. Enterprise experience and AI-powered financial support for small retail businesses." },
+      { property: "og:title", content: "Bloom Ledger — Expert people. Smarter finance." },
+      { property: "og:description", content: "Meet our finance and technology consultants and explore AI-powered financial support for your shop." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
 });
 
 function Index() {
+  const team = findConsultants("all", []);
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-blush/70 blur-3xl" />
-        <div className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-accent/50 blur-3xl" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:py-24">
-          <div>
-            <p className="inline-block rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
-              For boutiques, makers & shop owners
-            </p>
-            <h1 className="mt-5 text-5xl leading-[1.05] text-foreground md:text-6xl">
-              Your numbers, <em className="text-primary">finally</em> on your side.
-            </h1>
-            <p className="mt-5 max-w-md text-lg text-muted-foreground">
-              Bloom Ledger uses AI to automate your money tasks and explain your statements in plain English — or pairs you with an AI-forward financial assistant who's done this at enterprise scale.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-primary/90">
-                Explore AI tools <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/assistants" className="rounded-full border border-foreground/20 px-6 py-3 font-semibold text-foreground hover:bg-card">
-                Hire an assistant
-              </Link>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-5 pb-10 pt-10 md:pt-14">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <p className="text-xs font-bold uppercase text-primary">Independent minds. Enterprise experience.</p>
+              <h1 className="mt-3 text-5xl leading-tight md:text-6xl">Bloom Ledger<span className="text-primary">.</span></h1>
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">Real people behind smarter finance. Meet the team bringing financial clarity, strategy, and AI to your business.</p>
             </div>
+            <Button asChild className="h-11 w-fit"><Link to="/assistants">Find your financial partner <ArrowUpRight /></Link></Button>
           </div>
+          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4">
+            {team.map(({ consultant }) => (
+              <Link key={consultant.slug} to="/assistants" className="group min-w-0">
+                <ConsultantPhoto consultant={consultant} portrait />
+                <div className="mt-4 flex items-start justify-between gap-2"><h2 className="text-xl leading-tight md:text-2xl">{consultant.name}</h2><ArrowUpRight className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none" /></div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{consultant.headline}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="bg-ink text-background">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-3 px-5 py-7 md:flex-row md:items-center">
+          <h2 className="text-2xl">Big-company experience.<br className="md:hidden" /> Small-business focus.</h2>
+          <p className="max-w-lg text-sm leading-relaxed opacity-80">From retail planning and forecasting to strategy, controls, and technology — expertise that meets you where you are.</p>
+        </div>
+      </section>
+      <section className="mx-auto max-w-6xl px-5 py-14">
+        <h2 className="text-3xl md:text-4xl">Two ways to move forward</h2>
+        <div className="mt-7 grid gap-8 md:grid-cols-2">
+          <div className="border-t-2 border-primary py-6">
+            <Workflow className="h-7 w-7 text-primary" />
+            <h3 className="mt-4 text-2xl">AI automation & statement insights</h3>
+            <p className="mt-3 leading-relaxed text-muted-foreground">Automate your money tasks and turn your financial statements into clear next steps.</p>
+            <Button asChild variant="link" className="mt-3 px-0"><Link to="/services">Explore AI tools <ArrowRight /></Link></Button>
+          </div>
+          <div className="border-t-2 border-primary py-6">
+            <UserRound className="h-7 w-7 text-primary" />
+            <h3 className="mt-4 text-2xl">An AI-forward financial assistant</h3>
+            <p className="mt-3 leading-relaxed text-muted-foreground">Work with consultants whose finance, strategy, and technology experience supports your next decision.</p>
+            <Button asChild variant="link" className="mt-3 px-0"><Link to="/assistants">Meet your match <ArrowRight /></Link></Button>
+          </div>
+        </div>
+      </section>
+      <section className="border-t border-border bg-secondary">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-12 md:grid-cols-2">
+          <div><p className="text-xs font-bold uppercase text-primary">Your numbers, made clear</p><h2 className="mt-3 text-3xl">A little less admin.<br />A lot more insight.</h2></div>
           <AiDemo />
         </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-16">
-        <h2 className="text-3xl md:text-4xl">Two ways to bloom</h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl bg-secondary p-8">
-            <Workflow className="h-8 w-8 text-primary" />
-            <h3 className="mt-4 text-2xl">AI automation & statement insights</h3>
-            <p className="mt-2 text-secondary-foreground/80">Connect your shop, and let AI sort receipts, sync sales, flag surprises and turn your P&L into clear next steps.</p>
-            <Link to="/services" className="mt-5 inline-flex items-center gap-1 font-semibold text-primary">See how <ArrowRight className="h-4 w-4" /></Link>
-          </div>
-          <div className="rounded-3xl bg-ink p-8 text-background">
-            <UserRound className="h-8 w-8 text-blush" />
-            <h3 className="mt-4 text-2xl">An AI-forward financial assistant</h3>
-            <p className="mt-2 opacity-80">Fractional experts with enterprise finance backgrounds, armed with AI tools — at a small-shop price.</p>
-            <Link to="/assistants" className="mt-5 inline-flex items-center gap-1 font-semibold text-blush">Meet them <ArrowRight className="h-4 w-4" /></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-6xl gap-6 px-5 pb-20 md:grid-cols-3">
-        {[
-          ["4 hrs", "saved per week on bookkeeping"],
-          ["Plain English", "explanations of every statement"],
-          ["Enterprise", "experience, small-shop warmth"],
-        ].map(([big, small]) => (
-          <div key={big} className="rounded-2xl border border-border p-6">
-            <FileText className="h-5 w-5 text-primary" />
-            <p className="mt-3 font-display text-3xl text-foreground">{big}</p>
-            <p className="text-sm text-muted-foreground">{small}</p>
-          </div>
-        ))}
       </section>
     </>
   );
