@@ -1,0 +1,3 @@
+- [x] Refresh website wording and remove customer facing AI references and unnecessary dashes.
+- [x] Consolidate contact navigation and update business wording on the chat page.
+- [x] Expand services with practical examples and verify the pages.

@@ -6,12 +6,12 @@
     "loan-runway": "Loans and cash runway",
     "revenue-recognition": "Revenue accounting (ASC 606)",
     "erp-finance-systems": "Finance systems setup",
-    "small-business-clarity": "Bookkeeping and plain-English reports",
+    "small-business-clarity": "Bookkeeping and plain English reports",
     "compliance-controls": "Compliance and controls check",
     "reporting-dashboards": "Dashboards and reporting",
     "data-integrations": "Data and system connections",
     "technical-diligence": "Technical readiness review",
-    "strategy-ai-adoption": "Strategy and AI adoption",
+    "strategy-ai-adoption": "Strategy and automation adoption",
     "retail-track": "Retail expertise",
     "banking-track": "Banking expertise",
     "real-estate-track": "Real estate expertise"
@@ -70,7 +70,7 @@
       "bio": "Corporate planning and forecasting analyst at Sephora. Previously led a finance systems migration at Google and, at EY, handled revenue recognition for SaaS companies and advised startups on controls",
       "experience": [
         "Sephora Senior Financial Analyst, Corporate Business Planning & Analysis",
-        "Google Financial Operations Analyst, led Order-to-Cash SAP S/4HANA migration",
+        "Google Financial Operations Analyst, led Order to Cash SAP S/4HANA migration",
         "EY Core Assurance Associate (ASC 606 for four SaaS Fortune 500 companies, advised startups on internal controls and SOX) and Analytics & Innovation Specialist"
       ],
       "companies": [
@@ -110,7 +110,7 @@
       "slug": "cindy-balaji",
       "name": "Cindy Balaji",
       "credential": "MBA",
-      "headline": "Strategic Finance, M&A & AI Strategy",
+      "headline": "Strategic Finance, M&A & Automation Strategy",
       "location": "San Francisco",
       "photo": "/consultants/cindy-balaji.jpg",
       "linkedin": "https://www.linkedin.com/in/cindybalaji/",
@@ -127,16 +127,16 @@
         "real estate",
         "proptech",
         "software",
-        "e-commerce",
+        "ecommerce",
         "small business"
       ],
       "bio": "Strategy and finance operator with consulting, startup and audit experience. Worked on PE due diligence and M&A at L.E.K., was the 2nd finance hire at a Series A marketplace, and is a CPA",
       "experience": [
-        "RealPage Strategy & Ops (Lumina AI strategy)",
+        "RealPage Strategy & Ops (Lumina automation strategy)",
         "FalconX Finance & Strategy",
-        "L.E.K. Consulting Strategy Consultant (AI strategy, proptech and software, PE due diligence and M&A)",
+        "L.E.K. Consulting Strategy Consultant (automation strategy, proptech and software, PE due diligence and M&A)",
         "Pandora Strategic Finance",
-        "Chairish Senior Financial Analyst, 2nd finance hire at a Series A e-commerce marketplace",
+        "Chairish Senior Financial Analyst, 2nd finance hire at a Series A ecommerce marketplace",
         "BDO Auditor (tech, life sciences, retail, energy)"
       ],
       "companies": [
