@@ -1,3 +1,4 @@
-- [x] Refresh website wording and remove customer facing AI references and unnecessary dashes.
-- [x] Consolidate contact navigation and update business wording on the chat page.
-- [x] Expand services with practical examples and verify the pages.
+- [x] Homepage focused on founder pain points (no team photos or dark band).
+- [x] Curriculum page as future lead gen.
+- [x] Pricing page with Automated CFO and Dedicated CFO Contractor plans.
+- [x] Contractor demo login and workspace (systems, documents, 6 step close).

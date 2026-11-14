@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistantsRouteImport } from './routes/assistants'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CurriculumRouteImport } from './routes/curriculum'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as ServicesRouteImport } from './routes/services'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +37,16 @@ const CurriculumRoute = CurriculumRouteImport.update({
   path: '/curriculum',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -46,6 +58,8 @@ export interface FileRoutesByFullPath {
   '/assistants': typeof AssistantsRoute
   '/contact': typeof ContactRoute
   '/curriculum': typeof CurriculumRoute
+  '/login': typeof LoginRoute
+  '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +67,8 @@ export interface FileRoutesByTo {
   '/assistants': typeof AssistantsRoute
   '/contact': typeof ContactRoute
   '/curriculum': typeof CurriculumRoute
+  '/login': typeof LoginRoute
+  '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
@@ -61,15 +77,38 @@ export interface FileRoutesById {
   '/assistants': typeof AssistantsRoute
   '/contact': typeof ContactRoute
   '/curriculum': typeof CurriculumRoute
+  '/login': typeof LoginRoute
+  '/portal': typeof PortalRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assistants' | '/contact' | '/curriculum' | '/services'
+  fullPaths:
+    | '/'
+    | '/assistants'
+    | '/contact'
+    | '/curriculum'
+    | '/login'
+    | '/portal'
+    | '/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assistants' | '/contact' | '/curriculum' | '/services'
+  to:
+    | '/'
+    | '/assistants'
+    | '/contact'
+    | '/curriculum'
+    | '/login'
+    | '/portal'
+    | '/services'
   id:
-    '__root__' | '/' | '/assistants' | '/contact' | '/curriculum' | '/services'
+    | '__root__'
+    | '/'
+    | '/assistants'
+    | '/contact'
+    | '/curriculum'
+    | '/login'
+    | '/portal'
+    | '/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +116,8 @@ export interface RootRouteChildren {
   AssistantsRoute: typeof AssistantsRoute
   ContactRoute: typeof ContactRoute
   CurriculumRoute: typeof CurriculumRoute
+  LoginRoute: typeof LoginRoute
+  PortalRoute: typeof PortalRoute
   ServicesRoute: typeof ServicesRoute
 }
 
@@ -110,6 +151,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CurriculumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -125,6 +180,8 @@ const rootRouteChildren: RootRouteChildren = {
   AssistantsRoute: AssistantsRoute,
   ContactRoute: ContactRoute,
   CurriculumRoute: CurriculumRoute,
+  LoginRoute: LoginRoute,
+  PortalRoute: PortalRoute,
   ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
