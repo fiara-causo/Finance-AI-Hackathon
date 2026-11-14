@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
 const nav = [
-  { to: "/services", label: "Services" },
+  { to: "/services", label: "Pricing" },
+  { to: "/curriculum", label: "Curriculum" },
   { to: "/assistants", label: "Meet the Consultants" },
 ] as const;
 
@@ -20,7 +21,10 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Button asChild><Link to="/contact">Book a chat</Link></Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="ghost" className="hidden sm:inline-flex"><Link to="/login">Contractor login</Link></Button>
+          <Button asChild><Link to="/contact">Book a chat</Link></Button>
+        </div>
       </div>
       <nav className="flex justify-center gap-5 border-t border-border/60 py-2 text-xs font-medium text-muted-foreground md:hidden">
         {nav.map((n) => (
@@ -43,6 +47,8 @@ export function SiteFooter() {
           <p className="font-semibold">Services</p>
           <p className="mt-2"><Link to="/services">Automation & statements</Link></p>
           <p><Link to="/assistants">Meet the Consultants</Link></p>
+          <p><Link to="/curriculum">Curriculum</Link></p>
+          <p><Link to="/login">Contractor login</Link></p>
         </div>
         <p className="text-sm opacity-60 md:text-right">© 2026 Bloom Ledger. Built for small retail.</p>
       </div>
