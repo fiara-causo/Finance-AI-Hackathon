@@ -1,17 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Workflow, UserRound, ArrowUpRight } from "lucide-react";
-import { AiDemo } from "@/components/ai-demo";
+import { ArrowRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ConsultantPhoto } from "@/components/consultant-photo";
-import { findConsultants } from "@/lib/consultant-matching";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bloom Ledger | Expert people. Smarter finance." },
-      { name: "description", content: "Meet the finance and technology team behind Bloom Ledger. Enterprise experience and automation supported financial support for small retail businesses." },
-      { property: "og:title", content: "Bloom Ledger | Expert people. Smarter finance." },
-      { property: "og:description", content: "Meet our finance and technology consultants and explore automation supported financial support for your business." },
+      { title: "Bloom Ledger | Understand your numbers. Run a better business." },
+      { name: "description", content: "Plain English clarity about your numbers for founders who didn't study finance. Automated books and a CFO when you need one." },
+      { property: "og:title", content: "Bloom Ledger | Understand your numbers" },
+      { property: "og:description", content: "You didn't start a company to spend your weekends decoding a P&L." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -19,59 +16,76 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const pains = [
+  { q: "Where did the cash go?", d: "Sales are up, the P&L says you made money, and the bank account is still shrinking." },
+  { q: "Why does payroll feel scary?", d: "Your report says you're profitable, yet every second Friday feels like a cliff edge." },
+  { q: "What do I even ask?", d: "Your bookkeeper sends a PDF each month. You nod along and hope nothing is wrong." },
+];
+
+const stories = [
+  { name: "Marcus T.", role: "B2B SaaS founder", pain: "Sales were booming, but our bank balance kept dropping.", win: "I finally understood how upfront annual contracts were tricking my brain." },
+  { name: "Sarah K.", role: "Agency founder", pain: "I used to nod along on calls with our CPA.", win: "Now I bring three smart questions to every monthly review." },
+  { name: "David L.", role: "Ecommerce founder", pain: "I thought being bad at numbers meant I was failing as a CEO.", win: "Accounting is mostly addition dressed up in jargon." },
+];
+
+const paths = [
+  { t: "I hate math. Teach me the basics.", d: "A short cookie shop game. 15 founder numbers, no homework.", to: "/curriculum" as const },
+  { t: "I want it handled for me.", d: "Automated books, reconciliations and a monthly P&L in plain English.", to: "/services" as const },
+  { t: "I want a person on my side.", d: "A dedicated CFO contractor for a flat monthly rate.", to: "/assistants" as const },
+];
+
 function Index() {
-  const team = findConsultants("all", []);
   return (
     <>
       <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-10 md:pt-14">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase text-primary">Independent minds. Enterprise experience.</p>
-              <h1 className="mt-3 text-5xl leading-tight md:text-6xl">Bloom Ledger<span className="text-primary">.</span></h1>
-              <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">Real people behind smarter finance. Meet the team bringing financial clarity, strategy, and automation to your business.</p>
-            </div>
-            <Button asChild className="h-11 w-fit"><Link to="/assistants">Meet the Consultants <ArrowUpRight /></Link></Button>
+        <div className="mx-auto max-w-4xl px-5 py-20 text-center md:py-28">
+          <p className="text-xs font-bold uppercase tracking-wide text-primary">For founders who didn't study finance</p>
+          <h1 className="mt-4 text-4xl leading-tight md:text-6xl">You didn't start a company to spend your weekends decoding a P&amp;L.</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">Plain English clarity about your numbers. No spreadsheets, no accountant jargon, no homework. Understand your numbers. Run a better business.</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button asChild className="h-11"><Link to="/curriculum">Start the free curriculum <ArrowRight /></Link></Button>
+            <Button asChild variant="outline" className="h-11"><Link to="/services">See pricing</Link></Button>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4">
-            {team.map(({ consultant }) => (
-              <Link key={consultant.slug} to="/assistants" className="group min-w-0">
-                <ConsultantPhoto consultant={consultant} portrait />
-                <div className="mt-4 flex items-start justify-between gap-2"><h2 className="text-xl leading-tight md:text-2xl">{consultant.name}{consultant.credential && <span className="text-sm">, {consultant.credential}</span>}</h2><ArrowUpRight className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none" /></div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{consultant.headline}</p>
-                <p className="mt-2 text-xs leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
-              </Link>
+        </div>
+      </section>
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <h2 className="text-3xl md:text-4xl">Sound familiar?</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {pains.map((p) => (
+            <div key={p.q} className="rounded-lg border border-border bg-card p-6">
+              <p className="font-display text-2xl text-primary">"{p.q}"</p>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{p.d}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-10 text-center text-lg">You're not bad at numbers. Nobody ever explained them without the jargon. <span className="text-primary">That's what we're here for.</span></p>
+      </section>
+      <section className="border-y border-border bg-secondary">
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <h2 className="text-3xl md:text-4xl">Founders who felt the same way</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {stories.map((s) => (
+              <figure key={s.name} className="rounded-lg bg-card p-6">
+                <Quote className="h-6 w-6 text-primary" />
+                <blockquote className="mt-3 font-semibold">"{s.pain}"</blockquote>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">"{s.win}"</p>
+                <figcaption className="mt-4 text-sm"><span className="font-semibold">{s.name}</span> <span className="text-muted-foreground">· {s.role}</span></figcaption>
+              </figure>
             ))}
           </div>
+          <p className="mt-4 text-xs text-muted-foreground">Illustrative founder stories.</p>
         </div>
       </section>
-      <section className="bg-ink text-background">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-3 px-5 py-7 md:flex-row md:items-center">
-          <h2 className="text-2xl">Big-company experience.<br className="md:hidden" /> Small-business focus.</h2>
-          <p className="max-w-lg text-sm leading-relaxed opacity-80">From retail planning and forecasting to strategy, controls, and technology. Expertise that meets you where you are.</p>
-        </div>
-      </section>
-      <section className="mx-auto max-w-6xl px-5 py-14">
-        <h2 className="text-3xl md:text-4xl">Two ways to move forward</h2>
-        <div className="mt-7 grid gap-8 md:grid-cols-2">
-          <div className="border-t-2 border-primary py-6">
-            <Workflow className="h-7 w-7 text-primary" />
-            <h3 className="mt-4 text-2xl">Automation & statement insights</h3>
-            <p className="mt-3 leading-relaxed text-muted-foreground">Automate your money tasks and turn your financial statements into clear next steps.</p>
-            <Button asChild variant="link" className="mt-3 px-0"><Link to="/services">Explore automation <ArrowRight /></Link></Button>
-          </div>
-          <div className="border-t-2 border-primary py-6">
-            <UserRound className="h-7 w-7 text-primary" />
-            <h3 className="mt-4 text-2xl">An experienced financial assistant</h3>
-            <p className="mt-3 leading-relaxed text-muted-foreground">Work with consultants whose finance, strategy, and technology experience supports your next decision.</p>
-            <Button asChild variant="link" className="mt-3 px-0"><Link to="/assistants">Meet the Consultants <ArrowRight /></Link></Button>
-          </div>
-        </div>
-      </section>
-      <section className="border-t border-border bg-secondary">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-12 md:grid-cols-2">
-          <div><p className="text-xs font-bold uppercase text-primary">Your numbers, made clear</p><h2 className="mt-3 text-3xl">A little less admin.<br />A lot more insight.</h2></div>
-          <AiDemo />
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <h2 className="text-3xl md:text-4xl">Where would you like to start?</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {paths.map((p) => (
+            <Link key={p.t} to={p.to} className="group rounded-lg border-t-2 border-primary bg-card p-6 transition-shadow hover:shadow-lg">
+              <h3 className="text-xl">{p.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
+              <p className="mt-4 text-sm font-semibold text-primary">Start here <ArrowRight className="inline h-4 w-4 transition-transform group-hover:translate-x-1" /></p>
+            </Link>
+          ))}
         </div>
       </section>
     </>
