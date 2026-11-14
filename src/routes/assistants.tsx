@@ -28,7 +28,7 @@ function ConsultantPhoto({ consultant, large = false }: { consultant: Consultant
   return (
     <div className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-secondary text-secondary-foreground ${large ? "h-40 w-40 text-5xl sm:h-48 sm:w-48" : "h-28 w-28 text-3xl"}`}>
       {missing || !consultant.photo ? <span role="img" aria-label={consultant.name}>{initials}</span> : (
-        <img src={consultant.photo} alt={consultant.name} className="h-full w-full object-cover" onError={() => setMissing(true)} />
+        <img src={consultant.photo} alt={consultant.name} className="h-full w-full object-cover" ref={(image) => { if (image?.complete && image.naturalWidth === 0) setMissing(true); }} onError={() => setMissing(true)} />
       )}
     </div>
   );
