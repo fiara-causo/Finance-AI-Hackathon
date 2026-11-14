@@ -37,6 +37,7 @@ function ConsultantProfile({ consultant, need }: { consultant: Consultant; need:
           <DialogTitle className="font-display text-3xl leading-tight tracking-normal">{consultant.name}</DialogTitle>
           <DialogDescription className="mt-3 leading-relaxed">{consultant.headline}</DialogDescription>
           <p className="mt-2 text-sm leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
+          {"education" in consultant && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{consultant.education}</p>}
           <p className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="h-4 w-4" />{consultant.location}</p>
           <Button asChild variant="link" className="mt-2 h-auto px-0">
             <a href={consultant.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight /></a>
@@ -117,7 +118,7 @@ function Assistants() {
           <p aria-live="polite" className="text-sm text-muted-foreground">{results.length} {results.length === 1 ? "consultant" : "consultants"}{need !== "all" || filters.length ? " matched" : ""}</p>
           {(need !== "all" || filters.length > 0) && <Button variant="ghost" size="sm" onClick={() => { setNeed("all"); setFilters([]); }}>Clear filters</Button>}
         </div>
-        <div className="grid items-stretch gap-6 sm:grid-cols-2">
+        <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {results.map(({ consultant, reason }) => (
             <article key={consultant.slug} aria-label={consultant.name} className="flex min-w-0 cursor-pointer flex-col rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/60" onClick={() => setSelected(consultant)}>
               <div>
@@ -126,6 +127,7 @@ function Assistants() {
               </div>
               <p className="mt-5 text-sm font-semibold leading-relaxed text-foreground">{consultant.headline}</p>
               <p className="mt-2 text-xs leading-relaxed text-primary">{consultant.companies.join(" • ")}</p>
+              {"education" in consultant && <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{consultant.education}</p>}
               {reason && <p className="mt-3 text-sm font-medium leading-relaxed text-primary">{reason}</p>}
               <div className="mt-4 flex flex-wrap gap-2">{[...consultant.services].sort((a, b) => Number(b === need || filters.includes(b)) - Number(a === need || filters.includes(a))).slice(0, 3).map((service) => <ServiceChip key={service} service={service} />)}</div>
               <div className="mt-auto pt-6"><Button variant="outline" className="w-full" aria-label={`View profile of ${consultant.name}`} onClick={(event) => { event.stopPropagation(); setSelected(consultant); }}>View profile <ArrowUpRight /></Button></div>
