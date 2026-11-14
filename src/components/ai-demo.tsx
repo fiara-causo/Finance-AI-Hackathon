@@ -12,7 +12,7 @@ const samples = {
 
 export function AiDemo() {
   const keys = Object.keys(samples) as (keyof typeof samples)[];
-  const [q, setQ] = useState<keyof typeof samples>(keys[0]);
+  const [q, setQ] = useState<keyof typeof samples>(keys[0]!);
   return (
     <div className="rounded-3xl border border-border bg-card p-5 shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)] md:p-7">
       <div className="flex items-center gap-2 text-sm font-semibold text-primary">
