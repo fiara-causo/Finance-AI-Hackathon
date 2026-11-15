@@ -20,6 +20,9 @@ export const Route = createFileRoute("/contact")({
 // is also texted to the team through Linq by the book-chat function (supabase/functions/book-chat).
 // Leave it null to keep the form presentation only.
 const BOOKING_URL: string | null = null;
+// Linq sandbox number for the "text us" QR code. Set to null to hide that card. The sandbox ends Nov 19.
+const TEXT_NUMBER: string | null = "+12134986654";
+const TEXT_LINK = TEXT_NUMBER ? `sms:${TEXT_NUMBER}?body=${encodeURIComponent("Hi, I'd like to book a chat")}` : null;
 const days = ["Monday", "Tuesday", "Wednesday"] as const;
 const times = ["10:00 AM", "1:00 PM", "3:30 PM"] as const;
 
@@ -70,6 +73,16 @@ function Contact() {
           <textarea name="note" placeholder="What would you love help with?" rows={4} className="w-full rounded-xl border border-input bg-card px-4 py-3 outline-none focus:border-primary" />
           <Button type="submit" className="h-11" disabled={!slot}>{slot ? "Request this time" : "Pick a time first"}</Button>
         </form>
+      )}
+      {TEXT_LINK && (
+        <div className="mt-10 flex items-center gap-5 rounded-2xl border border-input bg-card p-5">
+          <img src="/text-us-qr.svg" alt="QR code to text us" width={112} height={112} className="h-28 w-28 shrink-0 rounded-lg bg-white p-1" />
+          <div>
+            <p className="font-semibold">Prefer to text?</p>
+            <p className="mt-1 text-sm text-muted-foreground">Scan with your phone, or tap the button, and send us a message to set up a time.</p>
+            <a href={TEXT_LINK} className="mt-3 inline-block rounded-xl border border-primary px-4 py-2 text-sm font-medium text-primary hover:bg-primary hover:text-primary-foreground">Text us</a>
+          </div>
+        </div>
       )}
     </section>
   );
