@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/day-one-cfo-logo.png";
 
 const nav = [
   { to: "/curriculum", label: "Curriculum" },
@@ -11,8 +12,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-border/60 bg-card">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
-        <Link to="/" className="font-display text-xl font-semibold text-foreground">
-          Day One CFO
+        <Link to="/" className="shrink-0" aria-label="Day One CFO home">
+          <img src={logo} alt="Day One CFO" width={1536} height={512} className="h-10 w-auto sm:h-12" />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
           {nav.map((n) => (
