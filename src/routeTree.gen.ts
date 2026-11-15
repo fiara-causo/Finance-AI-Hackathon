@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistantsRouteImport } from './routes/assistants'
+import { Route as AutomatedCfoRouteImport } from './routes/automated-cfo'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CurriculumRouteImport } from './routes/curriculum'
 import { Route as LoginRouteImport } from './routes/login'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AssistantsRoute = AssistantsRouteImport.update({
   id: '/assistants',
   path: '/assistants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomatedCfoRoute = AutomatedCfoRouteImport.update({
+  id: '/automated-cfo',
+  path: '/automated-cfo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -56,6 +62,7 @@ const ServicesRoute = ServicesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistants': typeof AssistantsRoute
+  '/automated-cfo': typeof AutomatedCfoRoute
   '/contact': typeof ContactRoute
   '/curriculum': typeof CurriculumRoute
   '/login': typeof LoginRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistants': typeof AssistantsRoute
+  '/automated-cfo': typeof AutomatedCfoRoute
   '/contact': typeof ContactRoute
   '/curriculum': typeof CurriculumRoute
   '/login': typeof LoginRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assistants': typeof AssistantsRoute
+  '/automated-cfo': typeof AutomatedCfoRoute
   '/contact': typeof ContactRoute
   '/curriculum': typeof CurriculumRoute
   '/login': typeof LoginRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/assistants'
+    | '/automated-cfo'
     | '/contact'
     | '/curriculum'
     | '/login'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/assistants'
+    | '/automated-cfo'
     | '/contact'
     | '/curriculum'
     | '/login'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/assistants'
+    | '/automated-cfo'
     | '/contact'
     | '/curriculum'
     | '/login'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistantsRoute: typeof AssistantsRoute
+  AutomatedCfoRoute: typeof AutomatedCfoRoute
   ContactRoute: typeof ContactRoute
   CurriculumRoute: typeof CurriculumRoute
   LoginRoute: typeof LoginRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/assistants'
       fullPath: '/assistants'
       preLoaderRoute: typeof AssistantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automated-cfo': {
+      id: '/automated-cfo'
+      path: '/automated-cfo'
+      fullPath: '/automated-cfo'
+      preLoaderRoute: typeof AutomatedCfoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistantsRoute: AssistantsRoute,
+  AutomatedCfoRoute: AutomatedCfoRoute,
   ContactRoute: ContactRoute,
   CurriculumRoute: CurriculumRoute,
   LoginRoute: LoginRoute,
