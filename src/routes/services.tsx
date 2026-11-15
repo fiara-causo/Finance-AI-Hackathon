@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Pricing: Automated CFO or Dedicated CFO | Bloom Ledger" },
+      { title: "Pricing: Automated CFO or Dedicated CFO | Day One CFO" },
       { name: "description", content: "Two flat monthly plans: an automated CFO, or a dedicated CFO contractor with 24/7 support billed by outcomes, not hours." },
-      { property: "og:title", content: "Pricing | Bloom Ledger" },
+      { property: "og:title", content: "Pricing | Day One CFO" },
       { property: "og:description", content: "Automated CFO or a dedicated CFO contractor. Flat monthly rates, never billed by the hour." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

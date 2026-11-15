@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bloom Ledger | Understand your numbers. Run a better business." },
+      { title: "Day One CFO | Understand your numbers. Run a better business." },
       { name: "description", content: "Plain English clarity about your numbers for founders who didn't study finance. Automated books and a CFO when you need one." },
-      { property: "og:title", content: "Bloom Ledger | Understand your numbers" },
+      { property: "og:title", content: "Day One CFO | Understand your numbers" },
       { property: "og:description", content: "You didn't start a company to spend your weekends decoding a P&L." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -12,9 +12,9 @@ import { findConsultants, serviceLabels, type Consultant } from "@/lib/consultan
 export const Route = createFileRoute("/assistants")({
   head: () => ({
     meta: [
-      { title: "Meet the Consultants | Bloom Ledger" },
+      { title: "Meet the Consultants | Day One CFO" },
       { name: "description", content: "Fractional financial assistants with enterprise experience and automation tools, matched to your small retail business." },
-      { property: "og:title", content: "Meet the Consultants | Bloom Ledger" },
+      { property: "og:title", content: "Meet the Consultants | Day One CFO" },
       { property: "og:description", content: "Experienced consultants and financial automation for small retail." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

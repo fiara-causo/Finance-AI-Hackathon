@@ -65,8 +65,8 @@
   --color-blush: var(--blush);
   --color-ink: var(--ink);
   --color-gold: var(--gold);
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -78,34 +78,34 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --background: oklch(0.985 0.004 160);
-  --foreground: oklch(0.22 0.015 160);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.015 160);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.015 160);
-  --primary: oklch(0.48 0.13 160);
-  --primary-foreground: oklch(0.99 0.004 160);
-  --secondary: oklch(0.94 0.035 160);
-  --secondary-foreground: oklch(0.3 0.07 160);
-  --muted: oklch(0.96 0.008 160);
-  --muted-foreground: oklch(0.46 0.018 160);
-  --accent: oklch(0.88 0.16 125);
-  --accent-foreground: oklch(0.28 0.06 145);
+  --radius: 1rem;
+  --background: #FFFEFB;
+  --foreground: #2B2622;
+  --card: #FFFFFF;
+  --card-foreground: #2B2622;
+  --popover: #FFFFFF;
+  --popover-foreground: #2B2622;
+  --primary: #2B2622;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FBD9B8;
+  --secondary-foreground: #2B2622;
+  --muted: #F7F3EE;
+  --muted-foreground: #7A726B;
+  --accent: #D9ECE2;
+  --accent-foreground: #2B2622;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.89 0.012 160);
-  --input: oklch(0.89 0.012 160);
-  --ring: oklch(0.48 0.13 160);
-  --chart-1: oklch(0.48 0.13 160);
-  --chart-2: oklch(0.75 0.1 10);
-  --chart-3: oklch(0.7 0.09 145);
-  --chart-4: oklch(0.82 0.12 80);
-  --chart-5: oklch(0.45 0.08 20);
-  --blush: oklch(0.88 0.16 125);
-  --ink: oklch(0.22 0.015 160);
-  --gold: oklch(0.72 0.15 75);
+  --border: #EFE9E3;
+  --input: #2B2622;
+  --ring: #2B2622;
+  --chart-1: #D9ECE2;
+  --chart-2: #DCEBF5;
+  --chart-3: #E6DEF5;
+  --chart-4: #FDF0C5;
+  --chart-5: #FBD9B8;
+  --blush: #FBD9B8;
+  --ink: #2B2622;
+  --gold: #FDF0C5;
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: oklch(0.208 0.042 265.755);
@@ -169,3 +169,6 @@
   body { font-family: var(--font-sans); }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; }
 }
+
+h1,h2,h3,.font-display{font-family:var(--font-display);font-weight:500;letter-spacing:-0.02em}
+body{font-variant-numeric:tabular-nums;line-height:1.6}

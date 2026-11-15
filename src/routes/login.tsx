@@ -7,10 +7,10 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Contractor login | Bloom Ledger" },
-      { name: "description", content: "Sign in to the Bloom Ledger contractor workspace demo." },
-      { property: "og:title", content: "Contractor login | Bloom Ledger" },
-      { property: "og:description", content: "Demo workspace for Bloom Ledger CFO contractors." },
+      { title: "Contractor login | Day One CFO" },
+      { name: "description", content: "Sign in to the Day One CFO contractor workspace demo." },
+      { property: "og:title", content: "Contractor login | Day One CFO" },
+      { property: "og:description", content: "Demo workspace for Day One CFO CFO contractors." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
