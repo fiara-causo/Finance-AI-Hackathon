@@ -47,7 +47,7 @@ function Services() {
             <ul className="mt-6 flex-1 space-y-3 text-sm">
               {p.features.map((f) => <li key={f} className="flex gap-2"><Check className="h-4 w-4 shrink-0 text-primary" />{f}</li>)}
             </ul>
-            <Button asChild variant={p.featured ? "default" : "outline"} className="mt-8 h-11"><Link to="/contact">{p.cta}</Link></Button>
+            <Button asChild variant={p.featured ? "secondary" : "outline"} className={`mt-8 h-11 ${p.featured ? "font-semibold shadow-lg ring-2 ring-secondary/60 hover:bg-secondary/80" : ""}`}><Link to="/contact">{p.cta}</Link></Button>
           </div>
         ))}
       </div>

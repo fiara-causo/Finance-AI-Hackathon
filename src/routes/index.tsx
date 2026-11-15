@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import marcus from "@/assets/client-marcus.jpg";
+import sarah from "@/assets/client-sarah.jpg";
+import david from "@/assets/client-david.jpg";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -23,9 +26,9 @@ const pains = [
 ];
 
 const stories = [
-  { name: "Marcus T.", role: "B2B SaaS founder", pain: "Sales were booming, but our bank balance kept dropping.", win: "I finally understood how upfront annual contracts were tricking my brain." },
-  { name: "Sarah K.", role: "Agency founder", pain: "I used to nod along on calls with our CPA.", win: "Now I bring three smart questions to every monthly review." },
-  { name: "David L.", role: "Ecommerce founder", pain: "I thought being bad at numbers meant I was failing as a CEO.", win: "Accounting is mostly addition dressed up in jargon." },
+  { photo: marcus, name: "Marcus T.", role: "B2B SaaS founder", pain: "Sales were booming, but our bank balance kept dropping.", win: "I finally understood how upfront annual contracts were tricking my brain." },
+  { photo: sarah, name: "Sarah K.", role: "Agency founder", pain: "I used to nod along on calls with our CPA.", win: "Now I bring three smart questions to every monthly review." },
+  { photo: david, name: "David L.", role: "Ecommerce founder", pain: "I thought being bad at numbers meant I was failing as a CEO.", win: "Accounting is mostly addition dressed up in jargon." },
 ];
 
 const paths = [
@@ -66,10 +69,12 @@ function Index() {
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {stories.map((s) => (
               <figure key={s.name} className="rounded-lg bg-card p-6">
-                <Quote className="h-6 w-6 text-primary" />
-                <blockquote className="mt-3 font-semibold">"{s.pain}"</blockquote>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">"{s.win}"</p>
-                <figcaption className="mt-4 text-sm"><span className="font-semibold">{s.name}</span> <span className="text-muted-foreground">· {s.role}</span></figcaption>
+                <figcaption className="flex items-center gap-3 text-sm">
+                  <img src={s.photo} alt={s.name} width={816} height={816} loading="lazy" className="h-12 w-12 rounded-full object-cover" />
+                  <span><span className="block font-semibold">{s.name}</span><span className="text-muted-foreground">{s.role}</span></span>
+                </figcaption>
+                <blockquote className="mt-4 font-semibold">{s.pain}</blockquote>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.win}</p>
               </figure>
             ))}
           </div>
