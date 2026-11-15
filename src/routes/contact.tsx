@@ -16,7 +16,10 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-// Hardcoded for the MVP. The form is presentation only: nothing is saved or sent.
+// Hardcoded time slots for the MVP. Nothing is saved on the site. When BOOKING_URL is set, the request
+// is also texted to the team through Linq by the book-chat function (supabase/functions/book-chat).
+// Leave it null to keep the form presentation only.
+const BOOKING_URL: string | null = null;
 const days = ["Monday", "Tuesday", "Wednesday"] as const;
 const times = ["10:00 AM", "1:00 PM", "3:30 PM"] as const;
 
@@ -32,7 +35,15 @@ function Contact() {
           {slot && <p className="mt-2 text-sm">You asked for {slot.day} at {slot.time}. We'll confirm that time or suggest a close one.</p>}
         </div>
       ) : (
-        <form className="mt-8 space-y-4" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+        <form className="mt-8 space-y-4" onSubmit={(e) => {
+          e.preventDefault();
+          if (BOOKING_URL && slot) {
+            const f = new FormData(e.currentTarget);
+            // Fire and forget: the visitor sees the confirmation either way.
+            fetch(BOOKING_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...slot, name: f.get("name"), email: f.get("email"), business: f.get("business"), note: f.get("note") }) }).catch(() => {});
+          }
+          setSent(true);
+        }}>
           <fieldset>
             <legend className="text-sm font-semibold">Pick a time for a 30 minute chat</legend>
             <div className="mt-3 grid grid-cols-3 gap-3">
@@ -53,10 +64,10 @@ function Contact() {
             </div>
             {slot && <p className="mt-3 text-sm">Selected: {slot.day} at {slot.time}</p>}
           </fieldset>
-          {["Your name", "Email", "Business name"].map((l) => (
-            <input key={l} required placeholder={l} type={l === "Email" ? "email" : "text"} className="w-full rounded-xl border border-input bg-card px-4 py-3 outline-none focus:border-primary" />
+          {([["name", "Your name"], ["email", "Email"], ["business", "Business name"]] as const).map(([k, l]) => (
+            <input key={k} name={k} required placeholder={l} type={k === "email" ? "email" : "text"} className="w-full rounded-xl border border-input bg-card px-4 py-3 outline-none focus:border-primary" />
           ))}
-          <textarea placeholder="What would you love help with?" rows={4} className="w-full rounded-xl border border-input bg-card px-4 py-3 outline-none focus:border-primary" />
+          <textarea name="note" placeholder="What would you love help with?" rows={4} className="w-full rounded-xl border border-input bg-card px-4 py-3 outline-none focus:border-primary" />
           <Button type="submit" className="h-11" disabled={!slot}>{slot ? "Request this time" : "Pick a time first"}</Button>
         </form>
       )}
