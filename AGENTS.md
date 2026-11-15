@@ -32,3 +32,4 @@ use the editor.
 - Render the consultant directory from its JSON data and keep matching logic browser-safe and independently tested; the intro form must not persist submissions on this site. It may send a request to `BOOKING_URL` (the `book-chat` function), which texts the team through Linq; leave that constant null to keep the form presentation-only.
 
 - Share consultant photo rendering between the homepage and directory so portrait sizing and missing-photo fallbacks stay consistent.
+- Keep the public Automated CFO demo entirely in transient browser state with sample data and a tested reducer; it must not call services or persist user actions.

@@ -33,7 +33,7 @@ const stories = [
 
 const paths = [
   { t: "I hate math. Teach me the basics.", d: "A short cookie shop game. 15 founder numbers, no homework.", to: "/curriculum" as const },
-  { t: "I want it handled for me.", d: "Automated books, reconciliations and a monthly P&L in plain English.", to: "/services" as const },
+  { t: "I want it handled for me.", d: "Automated books, reconciliations and a monthly P&L in plain English.", to: "/automated-cfo" as const },
   { t: "I want a person on my side.", d: "A dedicated CFO contractor for a flat monthly rate.", to: "/assistants" as const },
 ];
 
