@@ -7,9 +7,9 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/curriculum")({
   head: () => ({
     meta: [
-      { title: "Founder Finance Playbook | Bloom Ledger" },
+      { title: "Founder Finance Playbook | Day One CFO" },
       { name: "description", content: "A free four module curriculum that teaches founders to read their numbers in plain English." },
-      { property: "og:title", content: "Founder Finance Playbook | Bloom Ledger" },
+      { property: "og:title", content: "Founder Finance Playbook | Day One CFO" },
       { property: "og:description", content: "Learn the 15 numbers every founder needs, accrual accounting, your P&L and your own books." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

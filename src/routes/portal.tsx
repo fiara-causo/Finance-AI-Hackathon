@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/portal")({
   head: () => ({
     meta: [
-      { title: "Contractor workspace demo | Bloom Ledger" },
-      { name: "description", content: "Demo of the Bloom Ledger contractor workspace: connected systems, documents and the month end close." },
-      { property: "og:title", content: "Contractor workspace | Bloom Ledger" },
+      { title: "Contractor workspace demo | Day One CFO" },
+      { name: "description", content: "Demo of the Day One CFO contractor workspace: connected systems, documents and the month end close." },
+      { property: "og:title", content: "Contractor workspace | Day One CFO" },
       { property: "og:description", content: "See connected systems, uploaded documents and a six step month end close." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

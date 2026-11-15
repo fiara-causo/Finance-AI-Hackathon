@@ -17,7 +17,7 @@ export function AiDemo() {
   return (
     <div className="rounded-3xl border border-border bg-card p-5 shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)] md:p-7">
       <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-        <Sparkles className="h-4 w-4" /> Bloom automation · Sample boutique data
+        <Sparkles className="h-4 w-4" /> Day One CFO · Sample boutique data
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
         {keys.map((k) => (

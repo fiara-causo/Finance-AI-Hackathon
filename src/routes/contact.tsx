@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Book a chat | Bloom Ledger" },
-      { name: "description", content: "Tell us about your business and we'll show you how Bloom Ledger can help." },
-      { property: "og:title", content: "Contact Bloom Ledger" },
+      { title: "Book a chat | Day One CFO" },
+      { name: "description", content: "Tell us about your business and we'll show you how Day One CFO can help." },
+      { property: "og:title", content: "Contact Day One CFO" },
       { property: "og:description", content: "Book a chat about financial automation for your business." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
