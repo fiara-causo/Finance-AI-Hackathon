@@ -2,3 +2,6 @@
 - [x] Curriculum page as future lead gen.
 - [x] Pricing page with Automated CFO and Dedicated CFO Contractor plans.
 - [x] Contractor demo login and workspace (systems, documents, 6 step close).
+- [ ] Add the public Automated CFO demo with six interactive steps and a finish screen.
+- [ ] Point the homepage automation path and pricing automation button to the demo.
+- [ ] Verify demo interactions and mobile layout without saving or sending data.
