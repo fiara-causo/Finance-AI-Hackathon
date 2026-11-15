@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
 import logo from "@/assets/day-one-cfo-logo.png";
 
 const nav = [
@@ -24,6 +25,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" className="hidden sm:inline-flex"><Link to="/login">Contractor login</Link></Button>
+          <Button asChild variant="outline"><Link to="/automated-cfo"><Play aria-hidden="true" />Demo</Link></Button>
           <Button asChild><Link to="/contact">Book a chat</Link></Button>
         </div>
       </div>
